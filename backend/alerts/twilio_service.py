@@ -103,7 +103,7 @@ def send_whatsapp_alert(zone, risk_category="High", risk_score=None, custom_mess
         from_whatsapp = f"whatsapp:{from_whatsapp}"
 
     body = custom_message or (
-        f"🚨 *NAGDRISHTI-AI DISASTER ALERT*\n"
+        f"🚨 *AAG DRISHTI AI DISASTER ALERT*\n"
         f"📍 *Ward:* {zone.name}\n"
         f"⚠️ *Risk Status:* {risk_category} ({f'Score: {risk_score:.1f}' if risk_score else 'Critical'})\n"
         f"🌊 *Condition:* Low-lying drainage overflow detected.\n"

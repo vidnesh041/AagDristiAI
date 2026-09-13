@@ -23,14 +23,14 @@ def send_magic_link_email(email, token_str, code):
     """
     login_url = f"http://localhost:3000/login?token={token_str}&email={email}"
     
-    subject = f"🔐 NagDrishtiAI Sign-In Link & Verification Code: {code}"
+    subject = f"🔐 AAG Drishti AI Sign-In Link & Verification Code: {code}"
     
     message_text = f"""
-NagDrishtiAI - Urban Crisis & Mobility Intelligence Platform
+AAG Drishti AI - Urban Crisis & Mobility Intelligence Platform
 
 Hello,
 
-You requested a secure passwordless sign-in to the NagDrishtiAI Platform.
+You requested a secure passwordless sign-in to the AAG Drishti AI Platform.
 
 1. DIRECT ONE-CLICK LOGIN LINK:
 {login_url}
@@ -63,16 +63,16 @@ Nagpur Municipal Crisis & Disaster Intelligence Team
     <body>
       <div class="card">
         <div class="header">
-          <h2 style="margin: 0; font-size: 22px; letter-spacing: -0.5px;">NagDrishti<span style="color: #f43f5e;">AI</span></h2>
+          <h2 style="margin: 0; font-size: 22px; letter-spacing: -0.5px;">AAG Drishti <span style="color: #f43f5e;">AI</span></h2>
           <p style="margin: 4px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;">Urban Crisis & Mobility Intelligence</p>
         </div>
         <div class="content">
           <h3 style="margin-top: 0; color: #0f172a; font-size: 18px;">Your Secure Sign-In Link</h3>
           <p style="font-size: 14px; line-height: 1.5; color: #475569;">
-            Click the button below to instantly sign in to your NagDrishtiAI portal without entering a password:
+            Click the button below to instantly sign in to your AAG Drishti AI portal without entering a password:
           </p>
           <div style="text-align: center;">
-            <a href="{login_url}" class="btn">🚀 Sign In to NagDrishtiAI</a>
+            <a href="{login_url}" class="btn">🚀 Sign In to AAG Drishti AI</a>
           </div>
           <p style="font-size: 13px; color: #64748b; text-align: center; margin-top: 10px;">
             Or enter this 6-digit verification code on the login page:
@@ -91,7 +91,7 @@ Nagpur Municipal Crisis & Disaster Intelligence Team
     """
 
     try:
-        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'NagDrishtiAI <noreply@nagdrishti.gov.in>')
+        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'AAG Drishti AI <noreply@aagdrishti.ai>')
         send_mail(
             subject=subject,
             message=message_text,
@@ -358,7 +358,7 @@ class MagicLinkVerifyView(APIView):
 
         return Response({
             "status": "success",
-            "message": "Sign-in verified successfully. Welcome to NagDrishtiAI.",
+            "message": "Sign-in verified successfully. Welcome to AAG Drishti AI.",
             "token": token.key,
             "user": user_data
         }, status=status.HTTP_200_OK)

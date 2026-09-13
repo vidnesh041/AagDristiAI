@@ -13,14 +13,14 @@ from risk.views import PriorityQueueView, SimulateRainfallView
 def health_check(request):
     return Response({
         "status": "healthy",
-        "system": "NagDrishtiAI — Nagpur Urban Crisis Management System Backend",
+        "system": "AAG Drishti AI — Nagpur Urban Crisis Management System Backend",
         "version": "1.0.0",
         "postgis_enabled": getattr(settings, 'HAS_GEODJANGO', False),
     })
 
 # Customize Django Built-in Admin Site Header & Titles
-admin.site.site_header = "NagDrishtiAI — Database Admin"
-admin.site.site_title = "NagDrishtiAI Disaster DB Admin"
+admin.site.site_header = "AAG Drishti AI — Database Admin"
+admin.site.site_title = "AAG Drishti AI Disaster DB Admin"
 admin.site.index_title = "Nagpur Municipal Database Records & GIS Tables"
 
 urlpatterns = [

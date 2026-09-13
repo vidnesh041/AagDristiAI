@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "NagDrishtiAI — Nagpur Urban Crisis Management System",
-  description: "Real-time flood risk forecasting, safe routing corridors, and municipal command system for Nagpur powered by NagDrishtiAI.",
+  title: "AAG Drishti AI — Nagpur Urban Crisis Management System",
+  description: "Real-time flood risk forecasting, safe routing corridors, and municipal command system for Nagpur powered by AAG Drishti AI.",
 };
 
 export default function RootLayout({ children }) {
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           {/* Footer */}
           <footer className="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
             <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-              <span>© {new Date().getFullYear()} NagDrishtiAI — Nagpur Municipal Corporation (NMC)</span>
+              <span>© {new Date().getFullYear()} AAG Drishti AI — Nagpur Municipal Corporation (NMC)</span>
               <div className="flex items-center space-x-4 text-slate-400">
                 <span>PostGIS Geospatial</span>
                 <span>•</span>

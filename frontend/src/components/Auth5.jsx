@@ -224,7 +224,7 @@ export default function Auth5({ className = "" }) {
       <div className="w-full max-w-md mx-auto p-8 bg-white rounded-card-lg border border-slate-200 shadow-2xl text-center space-y-4">
         <Loader2 className="w-10 h-10 text-sky-600 animate-spin mx-auto" />
         <h2 className="text-xl font-bold text-navy-900">Verifying secure sign-in link...</h2>
-        <p className="text-xs text-slate-500">Signing you into NagDrishtiAI Platform</p>
+        <p className="text-xs text-slate-500">Signing you into AAG Drishti AI Platform</p>
       </div>
     );
   }
@@ -291,7 +291,7 @@ export default function Auth5({ className = "" }) {
             >
               <div className="text-center space-y-1">
                 <h1 className="text-2xl font-black text-navy-900 tracking-tight">Welcome Back</h1>
-                <p className="text-xs text-slate-500">Sign in to your NagDrishtiAI crisis portal</p>
+                <p className="text-xs text-slate-500">Sign in to your AAG Drishti AI crisis portal</p>
               </div>
 
               {/* Error Message Alert */}

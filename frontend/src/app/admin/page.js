@@ -26,8 +26,8 @@ const AdminClient = dynamic(() => import("./AdminClient"), {
 });
 
 export const metadata = {
-  title: "Admin Command Hub — NagDrishtiAI",
-  description: "Municipal disaster priority queue, field squad dispatch, and Twilio alert audits powered by NagDrishtiAI.",
+  title: "Admin Command Hub — AAG Drishti AI",
+  description: "Municipal disaster priority queue, field squad dispatch, and Twilio alert audits powered by AAG Drishti AI.",
 };
 
 export default function AdminPage() {
