@@ -155,7 +155,7 @@ const ScrollExpand = ({
       if (stageH <= 0) return;
 
       stage.style.height = `${stageH}px`;
-      track.style.height = `${stageH * (1 + d.effScrollDistance + d.effHoldDistance)}px`;
+      track.style.height = `${stageH * (1 + d.effScrollDistance)}px`;
 
       const w = root.clientWidth || winW;
       stage.style.setProperty('--se-title-size', `${clamp(w * 0.04, 18, 44)}px`);
