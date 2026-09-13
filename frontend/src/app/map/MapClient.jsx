@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { API_BASE_URL } from "../../lib/apiConfig";
 import Link from "next/link";
 import {
   RefreshCw,
@@ -422,12 +423,7 @@ export default function MapClient() {
   const fetchLiveWeather = async () => {
     setWeatherLoading(true);
     try {
-      let res;
-      try {
-        res = await fetch("http://127.0.0.1:8000/api/zones/weather/live/");
-      } catch (e) {
-        res = await fetch("http://localhost:8000/api/zones/weather/live/");
-      }
+      let res = await fetch(`${API_BASE_URL}/api/zones/weather/live/`);
 
       if (res && res.ok) {
         const data = await res.json();
@@ -482,19 +478,11 @@ export default function MapClient() {
   const fetchZoneData = async (isManualRefresh = false) => {
     setLoading(true);
     const endpoint = isManualRefresh
-      ? "http://127.0.0.1:8000/api/zones/risk/?refresh=true"
-      : "http://127.0.0.1:8000/api/zones/risk/";
-    const fallbackEndpoint = isManualRefresh
-      ? "http://localhost:8000/api/zones/risk/?refresh=true"
-      : "http://localhost:8000/api/zones/risk/";
+      ? `${API_BASE_URL}/api/zones/risk/?refresh=true`
+      : `${API_BASE_URL}/api/zones/risk/`;
 
     try {
-      let res;
-      try {
-        res = await fetch(endpoint);
-      } catch (e) {
-        res = await fetch(fallbackEndpoint);
-      }
+      let res = await fetch(endpoint);
 
       if (res && res.ok) {
         const data = await res.json();
@@ -526,7 +514,7 @@ export default function MapClient() {
 
       // Fetch citizen hazard reports for map overlay
       try {
-        const repRes = await fetch("http://127.0.0.1:8000/api/reports/");
+        const repRes = await fetch(`${API_BASE_URL}/api/reports/`);
         if (repRes.ok) {
           const reps = await repRes.json();
           setReportsList(Array.isArray(reps) ? reps : reps.results || []);
@@ -537,7 +525,7 @@ export default function MapClient() {
 
       // Fetch active construction zones for map overlay
       try {
-        const czRes = await fetch("http://127.0.0.1:8000/api/construction/?active=true");
+        const czRes = await fetch(`${API_BASE_URL}/api/construction/?active=true`);
         if (czRes.ok) {
           const czData = await czRes.json();
           setConstructionList(Array.isArray(czData) ? czData : czData.results || []);

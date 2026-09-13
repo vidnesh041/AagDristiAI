@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
+import { API_BASE_URL } from "../lib/apiConfig";
 import {
   ShieldAlert,
   LogIn,
@@ -94,7 +95,7 @@ export default function NavbarClient() {
 
                 {/* Direct Link to Django Built-in DB Admin */}
                 <a
-                  href="http://127.0.0.1:8000/admin/"
+                  href={`${API_BASE_URL}/admin/`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition"

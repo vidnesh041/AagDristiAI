@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { API_BASE_URL } from "../../lib/apiConfig";
 import Link from "next/link";
 import {
   FileText,
@@ -105,7 +106,7 @@ export default function ReportClient() {
         formData.append("photo", photoFile);
       }
 
-      const res = await fetch("http://127.0.0.1:8000/api/reports/", {
+      const res = await fetch(`${API_BASE_URL}/api/reports/`, {
         method: "POST",
         body: formData,
       });

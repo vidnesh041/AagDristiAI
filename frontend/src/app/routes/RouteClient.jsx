@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { API_BASE_URL } from "../../lib/apiConfig";
 import {
   Navigation,
   Compass,
@@ -345,7 +346,7 @@ export default function RouteClient() {
     try {
       const cleanFrom = fromVal.replace(/\s+/g, "");
       const cleanTo = toVal.replace(/\s+/g, "");
-      const res = await fetch(`http://127.0.0.1:8000/api/route/?from=${cleanFrom}&to=${cleanTo}`);
+      const res = await fetch(`${API_BASE_URL}/api/route/?from=${cleanFrom}&to=${cleanTo}`);
       if (res.ok) {
         const data = await res.json();
         setRouteData(data);

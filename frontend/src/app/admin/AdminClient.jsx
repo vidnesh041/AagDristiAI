@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../lib/apiConfig";
 import {
   ShieldAlert,
   ListOrdered,
@@ -57,28 +58,28 @@ export default function AdminClient() {
     setLoading(true);
     try {
       // 1. Priority Queue
-      const pqRes = await fetch("http://127.0.0.1:8000/api/priority-queue/");
+      const pqRes = await fetch(`${API_BASE_URL}/api/priority-queue/`);
       if (pqRes.ok) {
         const pqData = await pqRes.json();
         setPriorityQueue(pqData.queue || []);
       }
 
       // 2. Incident Reports
-      const repRes = await fetch("http://127.0.0.1:8000/api/reports/");
+      const repRes = await fetch(`${API_BASE_URL}/api/reports/`);
       if (repRes.ok) {
         const repData = await repRes.json();
         setReports(repData || []);
       }
 
       // 3. Twilio Alert Logs
-      const logsRes = await fetch("http://127.0.0.1:8000/api/alerts/logs/");
+      const logsRes = await fetch(`${API_BASE_URL}/api/alerts/logs/`);
       if (logsRes.ok) {
         const logsData = await logsRes.json();
         setAlertLogs(logsData.logs || []);
       }
 
       // 4. Construction & Roadwork Zones
-      const czRes = await fetch("http://127.0.0.1:8000/api/construction/");
+      const czRes = await fetch(`${API_BASE_URL}/api/construction/`);
       if (czRes.ok) {
         const czData = await czRes.json();
         setConstructionZones(Array.isArray(czData) ? czData : czData.results || []);
@@ -97,7 +98,7 @@ export default function AdminClient() {
   // Update Ward Dispatch Status
   const handleDispatchUpdate = async (zoneId, newStatus) => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/zones/${zoneId}/dispatch/`, {
+      const res = await fetch(`${API_BASE_URL}/api/zones/${zoneId}/dispatch/`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ dispatch_status: newStatus }),
@@ -119,7 +120,7 @@ export default function AdminClient() {
   // Verify or Reject Citizen Report
   const handleReportVerification = async (reportId, statusVal) => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/reports/${reportId}/verify/`, {
+      const res = await fetch(`${API_BASE_URL}/api/reports/${reportId}/verify/`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ verification_status: statusVal }),
@@ -140,7 +141,7 @@ export default function AdminClient() {
   // Toggle Construction Zone Active / Deactivated State
   const handleToggleConstructionZone = async (id, currentActive) => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/construction/${id}/`, {
+      const res = await fetch(`${API_BASE_URL}/api/construction/${id}/`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ active: !currentActive }),
@@ -160,7 +161,7 @@ export default function AdminClient() {
     e.preventDefault();
     setSavingProject(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/construction/", {
+      const res = await fetch(`${API_BASE_URL}/api/construction/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -197,7 +198,7 @@ export default function AdminClient() {
     setSimulating(true);
     setActiveStage(stageNum);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/simulate-rainfall/", {
+      const res = await fetch(`${API_BASE_URL}/api/simulate-rainfall/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ stage: stageNum }),
@@ -220,7 +221,7 @@ export default function AdminClient() {
     e.preventDefault();
     setSendingAlert(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/alerts/send/", {
+      const res = await fetch(`${API_BASE_URL}/api/alerts/send/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
