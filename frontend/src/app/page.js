@@ -121,8 +121,8 @@ export default function HomePage() {
       {/* React Bits ScrollExpand Component with 16:9 My Nagpur Landscape */}
       <section className="relative w-full rounded-card-lg border border-slate-700/60 shadow-2xl bg-slate-950">
         <ScrollExpand
-          src="/my-nagpur.jpg"
-          alt="MY NAGPUR Waterway & City Landmark"
+          src="/nagpur-resilience.jpg"
+          alt="Nagpur City Waterfront Promenade & Deekshabhoomi Landmark"
           title="Built For Citizens of Nagpur"
           scrollHint="Scroll to Reveal Mission ↓"
           startWidth={58}
