@@ -1158,21 +1158,21 @@ export default function MapClient() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-card border border-slate-200 shadow-card-soft">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-card border border-slate-200 shadow-card-soft">
         <div>
           <div className="flex items-center space-x-2">
             <span className="w-2.5 h-2.5 rounded-full bg-burgundy-700 animate-pulse"></span>
-            <h1 className="text-2xl font-bold text-navy-900">Nagpur Ward Risk Heatmap</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-navy-900">Nagpur Ward Risk Heatmap</h1>
           </div>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Real-time geospatial hazard classification across 10 municipal wards with PostGIS polygons.
           </p>
         </div>
 
         {/* Action Controls & Legend */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={() => fetchZoneData(true)}
             disabled={loading}
@@ -1187,10 +1187,10 @@ export default function MapClient() {
           </button>
 
           {/* Legend Filters */}
-          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold">
             <button
               onClick={() => setSelectedCategory(selectedCategory === "Low" ? "All" : "Low")}
-              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border transition ${
+              className={`flex items-center space-x-1.5 px-2 sm:px-2.5 py-1 rounded-full border transition ${
                 selectedCategory === "Low" ? "ring-2 ring-emerald-500" : ""
               } bg-emerald-50 text-emerald-800 border-emerald-200`}
             >
@@ -1200,7 +1200,7 @@ export default function MapClient() {
 
             <button
               onClick={() => setSelectedCategory(selectedCategory === "Medium" ? "All" : "Medium")}
-              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border transition ${
+              className={`flex items-center space-x-1.5 px-2 sm:px-2.5 py-1 rounded-full border transition ${
                 selectedCategory === "Medium" ? "ring-2 ring-amber-500" : ""
               } bg-amber-50 text-amber-800 border-amber-200`}
             >
@@ -1210,7 +1210,7 @@ export default function MapClient() {
 
             <button
               onClick={() => setSelectedCategory(selectedCategory === "High" ? "All" : "High")}
-              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border transition ${
+              className={`flex items-center space-x-1.5 px-2 sm:px-2.5 py-1 rounded-full border transition ${
                 selectedCategory === "High" ? "ring-2 ring-rose-500" : ""
               } bg-rose-50 text-rose-800 border-rose-200`}
             >
@@ -1220,7 +1220,7 @@ export default function MapClient() {
 
             <button
               onClick={() => setSelectedCategory(selectedCategory === "Severe" ? "All" : "Severe")}
-              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full border transition ${
+              className={`flex items-center space-x-1.5 px-2 sm:px-2.5 py-1 rounded-full border transition ${
                 selectedCategory === "Severe" ? "ring-2 ring-burgundy-900" : ""
               } bg-burgundy-50 text-burgundy-900 border-burgundy-300`}
             >
@@ -1271,7 +1271,7 @@ export default function MapClient() {
           >
             <div
               ref={mapContainerRef}
-              style={{ height: isFullScreen ? "100%" : "620px", width: "100%" }}
+              className={`w-full ${isFullScreen ? "h-full" : "h-[420px] sm:h-[520px] lg:h-[620px]"}`}
             />
           </div>
 
@@ -1280,7 +1280,7 @@ export default function MapClient() {
           {/* ========================================================================= */}
           <div
             style={{ zIndex: 9999, pointerEvents: "auto" }}
-            className="absolute top-6 left-6 flex items-center space-x-2 font-mono"
+            className="absolute top-3 left-3 sm:top-6 sm:left-6 flex items-center space-x-2 font-mono"
           >
             {/* Three-Dot Menu Toggle Button (Minimal Monochrome Black & White) */}
             <button

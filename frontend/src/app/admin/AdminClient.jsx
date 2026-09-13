@@ -259,11 +259,11 @@ export default function AdminClient() {
       )}
 
       {/* Header & Command Bar */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-navy-900 text-white p-6 rounded-card border border-navy-800 shadow-card-soft">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-navy-900 text-white p-4 sm:p-6 rounded-card border border-navy-800 shadow-card-soft">
         <div className="space-y-1">
           <div className="flex items-center space-x-2">
             <ShieldAlert className="w-6 h-6 text-rose-400" />
-            <h1 className="text-2xl font-bold">Municipal Disaster Command Hub</h1>
+            <h1 className="text-xl sm:text-2xl font-bold">Municipal Disaster Command Hub</h1>
           </div>
           <p className="text-xs text-slate-400">
             NMC Emergency Action Coordination, Priority Queues, Field Dispatch, and Twilio Alert Audits.
@@ -283,11 +283,11 @@ export default function AdminClient() {
       </div>
 
       {/* 8-Stage Rain Simulation Controller Banner */}
-      <div className="bg-white p-6 rounded-card border border-slate-200 shadow-card-soft space-y-4">
+      <div className="bg-white p-4 sm:p-6 rounded-card border border-slate-200 shadow-card-soft space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div className="flex items-center space-x-2">
             <PlayCircle className="w-5 h-5 text-burgundy-900" />
-            <h2 className="text-sm font-bold text-navy-900 uppercase tracking-wider">
+            <h2 className="text-xs sm:text-sm font-bold text-navy-900 uppercase tracking-wider">
               8-Stage Rain & Flash Flood Simulation Engine
             </h2>
           </div>
@@ -297,7 +297,7 @@ export default function AdminClient() {
         </div>
 
         {/* 8 Stage Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-1.5 sm:gap-2">
           {[
             { num: 1, label: "1. Dry & Clear", bg: "bg-emerald-50 text-emerald-800 border-emerald-200" },
             { num: 2, label: "2. Showers", bg: "bg-emerald-50 text-emerald-800 border-emerald-200" },
@@ -312,7 +312,7 @@ export default function AdminClient() {
               key={st.num}
               onClick={() => handleTriggerSimulation(st.num)}
               disabled={simulating}
-              className={`p-2.5 rounded-xl border text-[11px] font-semibold text-center transition ${
+              className={`p-2 sm:p-2.5 rounded-xl border text-[10px] sm:text-[11px] font-semibold text-center transition ${
                 activeStage === st.num
                   ? "ring-2 ring-burgundy-900 shadow-sm"
                   : "hover:opacity-80"
@@ -327,7 +327,7 @@ export default function AdminClient() {
       {/* Main Grid: Priority Queue & Twilio Alerts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Priority Queue (2 Cols) */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-card border border-slate-200 shadow-card-soft space-y-4">
+        <div className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-card border border-slate-200 shadow-card-soft space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-bold text-navy-900 flex items-center space-x-2">
               <ListOrdered className="w-5 h-5 text-burgundy-900" />

@@ -27,20 +27,20 @@ export default function HomePage() {
   const heroContainerRef = useRef(null);
 
   return (
-    <div className="space-y-12 py-4">
+    <div className="space-y-8 sm:space-y-12 py-2 sm:py-4">
       {/* Hero Section */}
       <section
         ref={heroContainerRef}
-        className="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-card-lg p-8 sm:p-12 text-white border border-navy-700 shadow-card-soft"
+        className="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-slate-900 rounded-card-lg p-5 sm:p-8 lg:p-12 text-white border border-navy-700 shadow-card-soft"
       >
-        <div className="relative z-10 max-w-3xl space-y-6">
-          <div className="inline-flex items-center space-x-2 bg-burgundy-900/70 border border-burgundy-700/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-rose-200 tracking-wide">
+        <div className="relative z-10 max-w-3xl space-y-5 sm:space-y-6">
+          <div className="inline-flex items-center space-x-2 bg-burgundy-900/70 border border-burgundy-700/80 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold text-rose-200 tracking-wide">
             <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
             <span>NAGDRISHTI-AI DISASTER INTELLIGENCE PLATFORM</span>
           </div>
 
           {/* Interactive Variable Proximity Heading */}
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-slate-50 select-none">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-slate-50 select-none">
             <VariableProximity
               label="Predictive AI & Real-Time Urban Disaster Intelligence"
               className="text-slate-50 drop-shadow-sm"
@@ -52,7 +52,7 @@ export default function HomePage() {
             />
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
             Combining real-time rainfall telemetry, topographic elevation, congestion patterns, and computer vision citizen reports to forecast flood risks, suggest safe travel corridors, and mobilize rapid municipal emergency response across Nagpur.
           </p>
 

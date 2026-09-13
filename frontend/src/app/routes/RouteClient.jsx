@@ -1044,49 +1044,46 @@ export default function RouteClient() {
             <div className="relative rounded-card overflow-hidden border border-slate-200">
               <div
                 ref={mapContainerRef}
-                style={{
-                  height: "440px",
-                  width: "100%",
-                }}
+                className="h-[340px] sm:h-[420px] lg:h-[480px] w-full"
               />
             </div>
           </div>
 
           {/* Navigation Drawer (Turn-by-turn / Traffic / Construction) */}
           {hasCalculated && routeData ? (
-            <div className="bg-white rounded-card border border-slate-200 shadow-card-soft overflow-hidden p-4 space-y-3 animate-in fade-in">
+            <div className="bg-white rounded-card border border-slate-200 shadow-card-soft overflow-hidden p-3.5 sm:p-4 space-y-3 animate-in fade-in">
               {/* Tab Selector */}
-              <div className="flex items-center space-x-2 border-b border-slate-200 pb-2.5">
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 sm:space-x-2 border-b border-slate-200 pb-2.5 overflow-x-auto">
                 <button
                   type="button"
                   onClick={() => setActiveInfoTab("directions")}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition whitespace-nowrap ${
                     activeInfoTab === "directions"
                       ? "bg-navy-900 text-white"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  <span>Turn-by-Turn Directions ({routeData?.safe_route?.steps?.length || 0})</span>
+                  <span>Turn-by-Turn ({routeData?.safe_route?.steps?.length || 0})</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setActiveInfoTab("traffic")}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition whitespace-nowrap ${
                     activeInfoTab === "traffic"
                       ? "bg-navy-900 text-white"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
                   <Car className="w-3.5 h-3.5" />
-                  <span>Live Traffic Flow</span>
+                  <span>Traffic Flow</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setActiveInfoTab("construction")}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  className={`flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold transition whitespace-nowrap ${
                     activeInfoTab === "construction"
                       ? "bg-navy-900 text-white"
                       : "text-slate-600 hover:bg-slate-100"

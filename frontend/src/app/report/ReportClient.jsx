@@ -148,12 +148,12 @@ export default function ReportClient() {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-white p-6 rounded-card border border-slate-200 shadow-card-soft">
+      <div className="bg-white p-4 sm:p-6 rounded-card border border-slate-200 shadow-card-soft">
         <div className="flex items-center space-x-2">
           <FileText className="w-6 h-6 text-burgundy-900" />
-          <h1 className="text-2xl font-bold text-navy-900">Citizen Hazard & Flood Report</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-navy-900">Citizen Hazard & Flood Report</h1>
         </div>
-        <p className="text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-slate-500 mt-1">
           Submit live road inundation or potholes. Automated Hugging Face AI Vision detects hazards and assigns civic priority.
         </p>
       </div>
@@ -259,7 +259,7 @@ export default function ReportClient() {
         </div>
       ) : (
         /* Report Form */
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-card border border-slate-200 shadow-card-soft space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 lg:p-8 rounded-card border border-slate-200 shadow-card-soft space-y-6">
           {errorMsg && (
             <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold">
               {errorMsg}

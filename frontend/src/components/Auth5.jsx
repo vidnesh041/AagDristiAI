@@ -237,7 +237,7 @@ export default function Auth5({ className = "" }) {
       </div>
 
       {/* Main Authentication Card */}
-      <div className="relative overflow-hidden bg-white/95 backdrop-blur-md p-7 sm:p-8 rounded-card-lg border border-slate-200/90 shadow-2xl">
+      <div className="relative overflow-hidden bg-white/95 backdrop-blur-md p-4 sm:p-7 rounded-card-lg border border-slate-200/90 shadow-2xl">
         {/* Navigation Tabs (Sign In / Create Account) */}
         {!inboxState && tab !== "magic_link" && tab !== "nmc_sso" && (
           <div className="flex bg-slate-100 p-1 rounded-xl mb-5 border border-slate-200">
