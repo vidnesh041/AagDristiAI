@@ -35,11 +35,13 @@ INSTALLED_APPS = [
     "alerts.apps.AlertsConfig",
 ]
 
-# Add GeoDjango if GDAL is available on system
+# Add GeoDjango if GDAL is available AND PostGIS is active
+HAS_GEODJANGO = False
 try:
     from django.contrib.gis import gdal  # noqa
-    INSTALLED_APPS.insert(6, "django.contrib.gis")
-    HAS_GEODJANGO = True
+    if DATABASE_URL and not USE_LOCAL_DB:
+        INSTALLED_APPS.insert(6, "django.contrib.gis")
+        HAS_GEODJANGO = True
 except Exception:
     HAS_GEODJANGO = False
 
