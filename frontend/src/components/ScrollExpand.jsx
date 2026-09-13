@@ -44,6 +44,13 @@ const ScrollExpand = ({
   const hintRef = useRef(null);
 
   const propsRef = useRef({});
+  const dimensionsRef = useRef({
+    effStartWidth: startWidth,
+    effStartHeight: startHeight,
+    effScrollDistance: scrollDistance,
+    effHoldDistance: holdDistance,
+  });
+
   propsRef.current = {
     startWidth,
     startHeight,
@@ -63,11 +70,12 @@ const ScrollExpand = ({
     const media = mediaRef.current;
     if (!frame || !media) return;
     const c = propsRef.current;
+    const d = dimensionsRef.current;
 
     const e = smoothstep(0, 1, p);
 
-    const w = c.startWidth + (100 - c.startWidth) * e;
-    const h = c.startHeight + (100 - c.startHeight) * e;
+    const w = d.effStartWidth + (100 - d.effStartWidth) * e;
+    const h = d.effStartHeight + (100 - d.effStartHeight) * e;
     const ix = Math.max(0, (100 - w) / 2);
     const iy = Math.max(0, (100 - h) / 2);
     const r = c.startRadius + (c.endRadius - c.startRadius) * e;
@@ -78,9 +86,9 @@ const ScrollExpand = ({
     if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`;
 
     if (titleRef.current) {
-      const out = smoothstep(0.35, 0.85, p);
+      const out = smoothstep(0.12, 0.55, p);
       titleRef.current.style.opacity = `${1 - out}`;
-      titleRef.current.style.transform = `translate3d(0, ${-28 * out}px, 0) scale(${1 + 0.06 * out})`;
+      titleRef.current.style.transform = `translate3d(0, ${-20 * out}px, 0) scale(${1 + 0.04 * out})`;
     }
 
     if (hintRef.current) {
@@ -90,7 +98,7 @@ const ScrollExpand = ({
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.60, 1, p);
+      const inn = smoothstep(0.55, 0.95, p);
       overlayRef.current.style.opacity = `${inn}`;
       overlayRef.current.style.transform = `translate3d(0, ${20 * (1 - inn)}px, 0)`;
     }
@@ -112,21 +120,52 @@ const ScrollExpand = ({
 
     const measure = () => {
       const c = propsRef.current;
-      stageH = c.useWindowScroll ? Math.max(520, window.innerHeight - 72) : root.clientHeight;
-      if (stageH <= 0) return;
-      stage.style.height = `${stageH}px`;
-      track.style.height = `${stageH * (1 + Math.max(0.5, c.scrollDistance) + Math.max(0.5, c.holdDistance))}px`;
+      const winW = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
-      const w = root.clientWidth || stageH;
-      stage.style.setProperty('--se-title-size', `${clamp(w * 0.055, 24, 60)}px`);
+      // Dynamic screen size responsive parameters
+      if (winW < 640) {
+        dimensionsRef.current = {
+          effStartWidth: Math.max(c.startWidth, 84),
+          effStartHeight: Math.max(c.startHeight, 56),
+          effScrollDistance: Math.min(c.scrollDistance, 0.7),
+          effHoldDistance: Math.min(c.holdDistance, 0.3),
+        };
+      } else if (winW < 1024) {
+        dimensionsRef.current = {
+          effStartWidth: Math.max(c.startWidth, 68),
+          effStartHeight: Math.max(c.startHeight, 52),
+          effScrollDistance: Math.min(c.scrollDistance, 0.9),
+          effHoldDistance: Math.min(c.holdDistance, 0.45),
+        };
+      } else {
+        dimensionsRef.current = {
+          effStartWidth: c.startWidth,
+          effStartHeight: c.startHeight,
+          effScrollDistance: c.scrollDistance,
+          effHoldDistance: c.holdDistance,
+        };
+      }
+
+      const d = dimensionsRef.current;
+      const winH = typeof window !== 'undefined' ? window.innerHeight : 800;
+      stageH = c.useWindowScroll ? Math.max(460, Math.min(760, winH - 72)) : root.clientHeight;
+      if (stageH <= 0) return;
+
+      stage.style.height = `${stageH}px`;
+      track.style.height = `${stageH * (1 + Math.max(0.3, d.effScrollDistance) + Math.max(0.2, d.effHoldDistance))}px`;
+
+      const w = root.clientWidth || winW;
+      stage.style.setProperty('--se-title-size', `${clamp(w * 0.045, 18, 52)}px`);
     };
 
     const readProgress = () => {
       const c = propsRef.current;
+      const d = dimensionsRef.current;
       if (!c.enabled) return 1;
-      const span = stageH * Math.max(0.01, c.scrollDistance);
+      const span = stageH * Math.max(0.01, d.effScrollDistance);
       if (c.useWindowScroll) {
-        const top = track.getBoundingClientRect().top;
+        if (!trackRef.current) return 0;
+        const top = trackRef.current.getBoundingClientRect().top;
         const offset = 64 - top;
         return clamp(offset / span, 0, 1);
       }
@@ -215,17 +254,17 @@ const ScrollExpand = ({
           <div ref={frameRef} className="scroll-expand__frame">
             {media}
             <div ref={scrimRef} className="scroll-expand__scrim" />
+            {title ? (
+              <div ref={titleRef} className="scroll-expand__title">
+                {title}
+              </div>
+            ) : null}
             {children ? (
               <div ref={overlayRef} className="scroll-expand__overlay">
                 {children}
               </div>
             ) : null}
           </div>
-          {title ? (
-            <div ref={titleRef} className="scroll-expand__title">
-              {title}
-            </div>
-          ) : null}
           {scrollHint ? (
             <div ref={hintRef} className="scroll-expand__hint">
               {scrollHint}

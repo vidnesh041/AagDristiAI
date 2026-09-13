@@ -25,8 +25,10 @@
   top: 64px;
   width: 100%;
   height: calc(100vh - 64px);
+  max-height: 850px;
+  min-height: 440px;
   overflow: hidden;
-  --se-title-size: clamp(2rem, 4vw, 3.75rem);
+  --se-title-size: clamp(1.15rem, 3.5vw, 3.25rem);
   border-radius: 20px;
 }
 
@@ -58,6 +60,7 @@
   background: radial-gradient(circle at center, rgba(11, 19, 41, 0.3) 0%, rgba(15, 23, 42, 0.82) 75%, rgba(11, 19, 41, 0.95) 100%);
   opacity: 0;
   transition: opacity 0.15s ease-out;
+  z-index: 2;
 }
 
 .scroll-expand__overlay {
@@ -68,9 +71,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5% 8%;
+  padding: 4% 6%;
   opacity: 0;
   will-change: opacity, transform;
+  z-index: 10;
 }
 
 .scroll-expand__title {
@@ -80,16 +84,17 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0 8%;
+  padding: 1rem 1.25rem;
   text-align: center;
   font-size: var(--se-title-size);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   color: #ffffff;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.9);
   pointer-events: none;
   will-change: opacity, transform;
+  z-index: 5;
 }
 
 .scroll-expand__hint {

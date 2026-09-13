@@ -130,9 +130,9 @@ export default function HomePage() {
           startRadius={24}
           endRadius={16}
           mediaZoom={1.2}
-          scrollDistance={1.4}
-          holdDistance={1.2}
-          smoothing={0.05}
+          scrollDistance={1.0}
+          holdDistance={0.6}
+          smoothing={0.03}
           overlayScrim={0.65}
           useWindowScroll={true}
         >
