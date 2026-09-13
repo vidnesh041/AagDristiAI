@@ -17,14 +17,14 @@ const ScrollExpand = ({
   alt = '',
   title = '',
   scrollHint = '',
-  startWidth = 52,
-  startHeight = 52,
-  startRadius = 24,
-  endRadius = 16,
-  mediaZoom = 1.25,
-  scrollDistance = 1.4,
-  holdDistance = 1.2,
-  smoothing = 0.05,
+  startWidth = 58,
+  startHeight = 58,
+  startRadius = 20,
+  endRadius = 12,
+  mediaZoom = 1.15,
+  scrollDistance = 0.45,
+  holdDistance = 0.25,
+  smoothing = 0.03,
   overlayScrim = 0.65,
   useWindowScroll = false,
   enabled = true,
@@ -86,9 +86,9 @@ const ScrollExpand = ({
     if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`;
 
     if (titleRef.current) {
-      const out = smoothstep(0.12, 0.55, p);
+      const out = smoothstep(0.10, 0.50, p);
       titleRef.current.style.opacity = `${1 - out}`;
-      titleRef.current.style.transform = `translate3d(0, ${-20 * out}px, 0) scale(${1 + 0.04 * out})`;
+      titleRef.current.style.transform = `translate3d(0, ${-18 * out}px, 0) scale(${1 + 0.03 * out})`;
     }
 
     if (hintRef.current) {
@@ -98,9 +98,9 @@ const ScrollExpand = ({
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.55, 0.95, p);
+      const inn = smoothstep(0.50, 0.90, p);
       overlayRef.current.style.opacity = `${inn}`;
-      overlayRef.current.style.transform = `translate3d(0, ${20 * (1 - inn)}px, 0)`;
+      overlayRef.current.style.transform = `translate3d(0, ${18 * (1 - inn)}px, 0)`;
     }
   }, []);
 
@@ -121,41 +121,44 @@ const ScrollExpand = ({
     const measure = () => {
       const c = propsRef.current;
       const winW = typeof window !== 'undefined' ? window.innerWidth : 1024;
+      const winH = typeof window !== 'undefined' ? window.innerHeight : 800;
 
-      // Dynamic screen size responsive parameters
+      let baseStageH = 500;
       if (winW < 640) {
+        baseStageH = Math.min(380, winH * 0.55);
         dimensionsRef.current = {
-          effStartWidth: Math.max(c.startWidth, 84),
-          effStartHeight: Math.max(c.startHeight, 56),
-          effScrollDistance: Math.min(c.scrollDistance, 0.7),
-          effHoldDistance: Math.min(c.holdDistance, 0.3),
+          effStartWidth: 72,
+          effStartHeight: 65,
+          effScrollDistance: 0.4,
+          effHoldDistance: 0.2,
         };
       } else if (winW < 1024) {
+        baseStageH = Math.min(460, winH * 0.6);
         dimensionsRef.current = {
-          effStartWidth: Math.max(c.startWidth, 68),
-          effStartHeight: Math.max(c.startHeight, 52),
-          effScrollDistance: Math.min(c.scrollDistance, 0.9),
-          effHoldDistance: Math.min(c.holdDistance, 0.45),
+          effStartWidth: 65,
+          effStartHeight: 62,
+          effScrollDistance: 0.45,
+          effHoldDistance: 0.25,
         };
       } else {
+        baseStageH = Math.min(520, winH * 0.65);
         dimensionsRef.current = {
-          effStartWidth: c.startWidth,
-          effStartHeight: c.startHeight,
-          effScrollDistance: c.scrollDistance,
-          effHoldDistance: c.holdDistance,
+          effStartWidth: c.startWidth || 58,
+          effStartHeight: c.startHeight || 58,
+          effScrollDistance: c.scrollDistance || 0.45,
+          effHoldDistance: c.holdDistance || 0.25,
         };
       }
 
       const d = dimensionsRef.current;
-      const winH = typeof window !== 'undefined' ? window.innerHeight : 800;
-      stageH = c.useWindowScroll ? Math.max(460, Math.min(760, winH - 72)) : root.clientHeight;
+      stageH = c.useWindowScroll ? baseStageH : root.clientHeight || baseStageH;
       if (stageH <= 0) return;
 
       stage.style.height = `${stageH}px`;
-      track.style.height = `${stageH * (1 + Math.max(0.3, d.effScrollDistance) + Math.max(0.2, d.effHoldDistance))}px`;
+      track.style.height = `${stageH * (1 + d.effScrollDistance + d.effHoldDistance)}px`;
 
       const w = root.clientWidth || winW;
-      stage.style.setProperty('--se-title-size', `${clamp(w * 0.045, 18, 52)}px`);
+      stage.style.setProperty('--se-title-size', `${clamp(w * 0.04, 18, 44)}px`);
     };
 
     const readProgress = () => {
