@@ -23,7 +23,18 @@ admin.site.site_header = "NagDrishtiAI — Database Admin"
 admin.site.site_title = "NagDrishtiAI Disaster DB Admin"
 admin.site.index_title = "Nagpur Municipal Database Records & GIS Tables"
 
+@api_view(['GET'])
+def root_view(request):
+    return Response({
+        "status": "healthy",
+        "system": "NagDrishtiAI — Nagpur Urban Crisis Management System Backend",
+        "version": "1.0.0",
+        "health_check": "/api/health/",
+        "admin_hub": "/admin/"
+    })
+
 urlpatterns = [
+    path('', root_view, name='root'),
     path('admin/', admin.site.urls),
     path('api/health/', health_check, name='health-check'),
     path('api/auth/', include('authentication.urls')),
