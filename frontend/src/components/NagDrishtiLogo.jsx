@@ -75,7 +75,7 @@ export default function NagDrishtiLogo({
               isLight ? "text-navy-900" : "text-white"
             }`}
           >
-            AAG <span className="text-sky-500">Drishti</span>
+            Nag<span className="text-sky-500">Drishti</span>
           </span>
           <span className="px-2 py-0.5 text-[11px] font-black uppercase tracking-wider text-white bg-gradient-to-r from-amber-500 to-orange-600 rounded-md shadow-sm">
             AI

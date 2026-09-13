@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-3xl space-y-6">
           <div className="inline-flex items-center space-x-2 bg-burgundy-900/70 border border-burgundy-700/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-rose-200 tracking-wide">
             <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
-            <span>AAG DRISHTI AI DISASTER INTELLIGENCE PLATFORM</span>
+            <span>NAGDRISHTI-AI DISASTER INTELLIGENCE PLATFORM</span>
           </div>
 
           {/* Interactive Variable Proximity Heading */}
@@ -139,7 +139,7 @@ export default function HomePage() {
           <div className="max-w-3xl text-white space-y-5 px-6 text-center">
             <div className="inline-flex items-center space-x-2 bg-emerald-500/30 border border-emerald-400/40 px-4 py-1.5 rounded-full text-xs font-bold text-emerald-200 tracking-wider">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>AAG DRISHTI AI CITIZEN RESILIENCE ENGINE</span>
+              <span>NAGDRISHTI-AI CITIZEN RESILIENCE ENGINE</span>
             </div>
             
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight drop-shadow-xl text-slate-50">

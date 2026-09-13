@@ -121,7 +121,7 @@ export default function CitizenPortalPage() {
         <div className="space-y-1">
           <div className="inline-flex items-center space-x-2 bg-emerald-500/20 border border-emerald-400/30 px-3 py-1 rounded-full text-xs font-semibold text-emerald-300 mb-1">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>AAG DRISHTI AI CITIZEN DISASTER PORTAL</span>
+            <span>NAGDRISHTI-AI CITIZEN DISASTER PORTAL</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             Welcome, {displayName}!

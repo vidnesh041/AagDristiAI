@@ -11,7 +11,7 @@ export default function LoginPage() {
         fallback={
           <div className="w-full max-w-md p-8 bg-white rounded-card-lg border border-slate-200 shadow-xl text-center space-y-3">
             <Loader2 className="w-8 h-8 text-sky-600 animate-spin mx-auto" />
-            <p className="text-xs text-slate-500 font-medium">Loading AAG Drishti AI Authentication...</p>
+            <p className="text-xs text-slate-500 font-medium">Loading NagDrishtiAI Authentication...</p>
           </div>
         }
       >
