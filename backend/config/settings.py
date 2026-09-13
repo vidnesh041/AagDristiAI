@@ -91,7 +91,7 @@ if DATABASE_URL and not USE_LOCAL_DB:
 else:
     DATABASES = {
         "default": {
-            "ENGINE": "django.contrib.gis.db.backends.spatialite" if HAS_GEODJANGO else "django.db.backends.sqlite3",
+            "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
